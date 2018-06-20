@@ -16,25 +16,44 @@ function mfHoc (url) {
 
       this.state = {}
     }
+
     componentDidMount () {
-      fetch(url)
-        .then(response => response.text())
-        .then(content => this.setState(state => ({ ...state, content })))
+      fetch(url, {
+        headers: new Headers({
+          'X-Microfront': 'enabled'
+        })
+      })
+        .then(response => response.text().then(content => {
+          this.setState(state => ({
+            ...state,
+            content,
+            assets: response.headers['x-microfront-assets']
+          }))
+        }))
         .catch(err => this.setState(state => ({ ...state, err })))
     }
 
     render () {
-      const { content, err } = this.state
+      const { content, assets, err } = this.state
 
       if (err) {
         return <div>Error! {err.message}</div>
       }
 
       if (!content) {
-        return <div>Loading...</div>
+        return null
       }
 
-      return <div dangerouslySetInnerHTML={{ __html: content }} />
+      return (
+        <Fragment>
+          {assets && (
+            <Helmet>
+              {assets}
+            </Helmet>
+          )}
+          <div dangerouslySetInnerHTML={{ __html: content }} />
+        </Fragment>
+      )
     }
   }
 }
