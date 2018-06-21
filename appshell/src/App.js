@@ -61,7 +61,7 @@ const hoc = url => {
   return withInitialData(ServerOne)
 }
 
-const App = () => (
+const App = ({ path }) => (
   <Fragment>
     <Helmet>
       <title>App</title>
@@ -78,9 +78,13 @@ const App = () => (
     </nav>
     <Switch>
       <Route exact path='/' component={Home} />
-      <Route path='/one' component={hoc('http://localhost:4000/one')} />
+      <Route path='/one' component={hoc(path ? `http://localhost:4000${path}` : 'http://localhost:4000/one')} />
     </Switch>
   </Fragment>
 )
+
+App.propTypes = {
+  path: PropTypes.string
+}
 
 export default App

@@ -23,7 +23,7 @@ server
     const context = {}
     const app = (
       <StaticRouter context={context} location={req.url}>
-        <App />
+        <App path={req.path} />
       </StaticRouter>
     )
     const data = await getAllInitialData(app)

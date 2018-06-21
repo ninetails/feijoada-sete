@@ -4,8 +4,8 @@ import { Helmet } from 'react-helmet'
 export default () => (
   <Fragment>
     <Helmet>
-      <title>Server One Home</title>
+      <title>Server One Internal Page</title>
     </Helmet>
-    <div>App One Home</div>
+    <div>App One Internal Page</div>
   </Fragment>
 )
