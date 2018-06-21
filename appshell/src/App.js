@@ -1,54 +1,55 @@
 import React, { Fragment, PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import Link from 'react-router-dom/Link'
 import Route from 'react-router-dom/Route'
 import Switch from 'react-router-dom/Switch'
+import { withInitialData } from 'react-data-fetching-components'
 import Home from './Home'
 import './App.css'
 import logo from './react.svg'
+import reactStringReplace from 'react-string-replace'
 
 import 'cross-fetch/polyfill'
 
-function mfHoc (url) {
-  return class MFComponent extends PureComponent {
-    constructor (props) {
-      super(props)
+const titleStrToComponent = input =>
+  reactStringReplace(input, /<title\s[^>]+>(.*)<\/title>/i, (match, i) => (<title key={match + i}>{match}</title>))
 
-      this.state = {}
+const scriptStrToComponent = input =>
+  reactStringReplace(input, /<script\ssrc="(.*)"[^>]+>.*<\/script>/i, (match, i) => (<script key={match + i} src={match} defer />))
+
+const transformAssets = input =>
+  scriptStrToComponent(titleStrToComponent(input))
+
+const hoc = url => {
+  class ServerOne extends PureComponent {
+    static propTypes = {
+      data: PropTypes.shape({
+        assets: PropTypes.string,
+        content: PropTypes.string
+      })
     }
 
-    componentDidMount () {
-      fetch(url, {
+    static async getInitialData () {
+      const response = await fetch(url, {
         headers: new Headers({
           'X-Microfront': 'enabled'
         })
       })
-        .then(response => response.text().then(content => {
-          this.setState(state => ({
-            ...state,
-            content,
-            assets: response.headers['x-microfront-assets']
-          }))
-        }))
-        .catch(err => this.setState(state => ({ ...state, err })))
+      const content = await response.text()
+      const assets = response.headers.get('x-microfront-assets')
+
+      return { assets, content }
     }
 
     render () {
-      const { content, assets, err } = this.state
-
-      if (err) {
-        return <div>Error! {err.message}</div>
-      }
-
-      if (!content) {
-        return null
-      }
+      const { assets, content } = this.props.data
 
       return (
         <Fragment>
           {assets && (
             <Helmet>
-              {assets}
+              {transformAssets(assets)}
             </Helmet>
           )}
           <div dangerouslySetInnerHTML={{ __html: content }} />
@@ -56,6 +57,8 @@ function mfHoc (url) {
       )
     }
   }
+
+  return withInitialData(ServerOne)
 }
 
 const App = () => (
@@ -75,7 +78,7 @@ const App = () => (
     </nav>
     <Switch>
       <Route exact path='/' component={Home} />
-      <Route path='/one' component={mfHoc('http://localhost:4000/one')} />
+      <Route path='/one' component={hoc('http://localhost:4000/one')} />
     </Switch>
   </Fragment>
 )

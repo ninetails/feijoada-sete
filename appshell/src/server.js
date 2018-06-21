@@ -4,20 +4,30 @@ import { StaticRouter } from 'react-router-dom'
 import express from 'express'
 import { renderToString } from 'react-dom/server'
 import { Helmet } from 'react-helmet'
+import {
+  ComponentDataStore,
+  getAllInitialData
+} from 'react-data-fetching-components'
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
+
+// const asyncMiddleware = fn => (...args) =>
+//   Promise.resolve(fn(...args))
+//     .catch(args[args.length - 1])
 
 const server = express()
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
-  .get('/*', (req, res) => {
+  .get('/*', async (req, res) => {
     const context = {}
-    const markup = renderToString(
+    const app = (
       <StaticRouter context={context} location={req.url}>
         <App />
       </StaticRouter>
     )
+    const data = await getAllInitialData(app)
+    const markup = renderToString(<ComponentDataStore data={data}>{app}</ComponentDataStore>)
     const helmet = Helmet.renderStatic()
 
     if (context.url) {
@@ -37,7 +47,9 @@ server
   </head>
   <body ${helmet.bodyAttributes.toString()}>
     <div id="root">${markup}</div>
+    <script>window._COMPONENT_DATA_ = ${JSON.stringify(data).replace(/<\/script>/i, '<\\/script>')};</script>
     ${process.env.NODE_ENV === 'production' ? `<script src="${assets.client.js}" defer></script>` : `<script src="${assets.client.js}" defer crossorigin></script>`}
+    ${helmet.script.toString()}
   </body>
 </html>`
       )

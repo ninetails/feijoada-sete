@@ -5257,7 +5257,7 @@ object-copy@^0.1.0:
     define-property "^0.2.5"
     kind-of "^3.0.3"
 
-object-hash@^1.1.4:
+object-hash@^1.1.4, object-hash@^1.2.0:
   version "1.3.0"
   resolved "http://nexus.pagseguro.intranet/repository/npm-all/object-hash/-/object-hash-1.3.0.tgz#76d9ba6ff113cf8efc0d996102851fe6723963e2"
 
@@ -5937,6 +5937,13 @@ prop-types@^15.5.4, prop-types@^15.6.0, prop-types@^15.6.1:
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 
+prop-types@^15.6.2:
+  version "15.6.2"
+  resolved "http://nexus.pagseguro.intranet/repository/npm-all/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
+  dependencies:
+    loose-envify "^1.3.1"
+    object-assign "^4.1.1"
+
 proxy-addr@~2.0.3:
   version "2.0.3"
   resolved "http://nexus.pagseguro.intranet/repository/npm-all/proxy-addr/-/proxy-addr-2.0.3.tgz#355f262505a621646b3130a728eb647e22055341"
@@ -6126,6 +6133,14 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-data-fetching-components@^0.1.1:
+  version "0.1.1"
+  resolved "http://nexus.pagseguro.intranet/repository/npm-all/react-data-fetching-components/-/react-data-fetching-components-0.1.1.tgz#d63a2c32b251c725af6d06063913002ba67912b6"
+  dependencies:
+    object-hash "^1.2.0"
+    prop-types "^15.6.0"
+    react-tree-walker "^2.1.3"
+
 react-dev-utils@4.1.0:
   version "4.1.0"
   resolved "http://nexus.pagseguro.intranet/repository/npm-all/react-dev-utils/-/react-dev-utils-4.1.0.tgz#f6f436febd3f4eeb538490319b51c875c1e35bc5"
@@ -6236,6 +6251,16 @@ react-side-effect@^1.1.0:
   dependencies:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
+
+react-string-replace@^0.4.1:
+  version "0.4.1"
+  resolved "http://nexus.pagseguro.intranet/repository/npm-all/react-string-replace/-/react-string-replace-0.4.1.tgz#024c6ac0a91163ecae439a1b197d3e1660c98c0d"
+  dependencies:
+    lodash "^4.17.4"
+
+react-tree-walker@^2.1.3:
+  version "2.2.0"
+  resolved "http://nexus.pagseguro.intranet/repository/npm-all/react-tree-walker/-/react-tree-walker-2.2.0.tgz#d5f2c9e5673530f3af9c170330b4cd37aacb3dbd"
 
 "react@^15 || ^16", react@^16.4.1:
   version "16.4.1"

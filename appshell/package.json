@@ -12,11 +12,14 @@
     "babel-core": "^7.0.0-0",
     "cross-fetch": "^2.2.1",
     "express": "^4.16.3",
+    "prop-types": "^15.6.2",
     "razzle": "^2.2.0",
     "react": "^16.4.1",
+    "react-data-fetching-components": "^0.1.1",
     "react-dom": "^16.4.1",
     "react-helmet": "^5.2.0",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "react-string-replace": "^0.4.1"
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0",
