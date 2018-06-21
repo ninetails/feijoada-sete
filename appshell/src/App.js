@@ -78,12 +78,12 @@ const App = () => (
     <nav>
       <ul>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/one'>Server One</Link></li>
+        <li><Link to='/react'>Server with React</Link></li>
       </ul>
     </nav>
     <Switch>
       <Route exact path='/' component={Home} />
-      <Route path='/one' component={props => <ExternalContent url='http://localhost:4000' {...props} />} />
+      <Route path='/react' component={props => <ExternalContent url='http://localhost:4000' {...props} />} />
     </Switch>
   </Fragment>
 )

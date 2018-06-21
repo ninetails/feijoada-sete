@@ -15,10 +15,10 @@ server
   .use(cors({
     exposedHeaders: ['X-Microfront-Assets']
   }))
-  .get('/one*', (req, res) => {
+  .get('/react*', (req, res) => {
     const context = {}
     const markup = renderToString(
-      <StaticRouter basename='/one' context={context} location={req.url}>
+      <StaticRouter basename='/react' context={context} location={req.url}>
         <App />
       </StaticRouter>
     )
@@ -32,7 +32,7 @@ server
         'Expires': '-1',
         'Pragma': 'no-cache',
         'X-Microfront-Assets': `${helmet.title.toString()}${helmet.meta.toString()}${helmet.link.toString()}<script src="${assets.client.js}" defer></script>`
-      }).status(200).send(`<div id="app-one">${markup}</div>`)
+      }).status(200).send(`<div id="app-react">${markup}</div>`)
     } else {
       res.status(200).send(
         `<!doctype html>
@@ -47,7 +47,7 @@ server
     ${assets.client.css ? `<link rel="stylesheet" href="${assets.client.css}">` : ''}
   </head>
   <body ${helmet.bodyAttributes.toString()}>
-    <div id="app-one">${markup}</div>
+    <div id="app-react">${markup}</div>
     ${process.env.NODE_ENV === 'production' ? `<script src="${assets.client.js}" defer></script>` : `<script src="${assets.client.js}" defer crossorigin></script>`}
   </body>
 </html>`
