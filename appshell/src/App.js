@@ -21,17 +21,22 @@ const scriptStrToComponent = input =>
 const transformAssets = input =>
   scriptStrToComponent(titleStrToComponent(input))
 
-const hoc = url => {
-  class ServerOne extends PureComponent {
+const ExternalContent = (() => {
+  class ExternalContentRaw extends PureComponent {
     static propTypes = {
+      url: PropTypes.string.isRequired,
+      location: PropTypes.shape({
+        pathname: PropTypes.string
+      }),
       data: PropTypes.shape({
         assets: PropTypes.string,
         content: PropTypes.string
       })
     }
 
-    static async getInitialData () {
-      const response = await fetch(url, {
+    static async getInitialData ({ location, url }) {
+      const { pathname } = location
+      const response = await fetch(`${url}${pathname}`, {
         headers: new Headers({
           'X-Microfront': 'enabled'
         })
@@ -58,10 +63,10 @@ const hoc = url => {
     }
   }
 
-  return withInitialData(ServerOne)
-}
+  return withInitialData(ExternalContentRaw)
+})()
 
-const App = ({ path }) => (
+const App = () => (
   <Fragment>
     <Helmet>
       <title>App</title>
@@ -78,7 +83,7 @@ const App = ({ path }) => (
     </nav>
     <Switch>
       <Route exact path='/' component={Home} />
-      <Route path='/one' component={hoc(path ? `http://localhost:4000${path}` : 'http://localhost:4000/one')} />
+      <Route path='/one' component={props => <ExternalContent url='http://localhost:4000' {...props} />} />
     </Switch>
   </Fragment>
 )

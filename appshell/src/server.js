@@ -11,10 +11,6 @@ import {
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 
-// const asyncMiddleware = fn => (...args) =>
-//   Promise.resolve(fn(...args))
-//     .catch(args[args.length - 1])
-
 const server = express()
 server
   .disable('x-powered-by')
@@ -23,7 +19,7 @@ server
     const context = {}
     const app = (
       <StaticRouter context={context} location={req.url}>
-        <App path={req.path} />
+        <App />
       </StaticRouter>
     )
     const data = await getAllInitialData(app)
