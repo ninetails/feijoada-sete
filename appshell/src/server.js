@@ -43,7 +43,7 @@ server
   </head>
   <body ${helmet.bodyAttributes.toString()}>
     <div id="root">${markup}</div>
-    <script>window._COMPONENT_DATA_ = ${JSON.stringify(data).replace(/<\/script>/i, '<\\/script>')};</script>
+    <script>window._COMPONENT_DATA_ = ${JSON.stringify(data).replace(/<\/script>/gi, '<\\/script>')};</script>
     ${process.env.NODE_ENV === 'production' ? `<script src="${assets.client.js}" defer></script>` : `<script src="${assets.client.js}" defer crossorigin></script>`}
     ${helmet.script.toString()}
   </body>
