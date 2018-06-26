@@ -5,14 +5,17 @@
 
 ## Preparation
 
-Run `yarn` to install all dependencies here and on each server folder
+Run `npm install` to install `eslint` configuration used by all subprojects
+
+Run `npm run bootstrap` to install all dependencies for each subproject
 
 ## Usage
 
-Run each server, mind to read each folder `README.md` that gives what PORT to run before `yarn start`
+To serve, run `npm start` and main application will be served on `http://localhost:3000/`.
 
 ## Structure
 
+**package/**
 * **appshell** - It's the main application that will call other ones. Made with React + SSR based on Razzle.
 * **react** - A server made with React + SSR based on Razzle and outputs only the content depending on headers sent
 * **angularjs** - A server without SSR made with AngularJS

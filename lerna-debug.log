@@ -1,0 +1,62 @@
+0 silly input [ 'start' ]
+1 silly flags { _: [ 'run' ],
+1 silly flags   'reject-cycles': false,
+1 silly flags   rejectCycles: false,
+1 silly flags   script: 'start',
+1 silly flags   args: [] }
+2 verbose rootPath /home/bld_cishizaka/ninetails/feijoada-sete
+3 info version 2.11.0
+4 silly existsSync /home/bld_cishizaka/ninetails/feijoada-sete/VERSION
+5 info versioning independent
+6 silly initialize attempt
+7 silly initialize success
+8 silly execute attempt
+9 silly runScriptInDir start [] angularjs
+10 silly getExecOpts { cwd:
+10 silly getExecOpts    '/home/bld_cishizaka/ninetails/feijoada-sete/packages/angularjs' }
+11 silly runScriptInDir start [] appshell
+12 silly getExecOpts { cwd:
+12 silly getExecOpts    '/home/bld_cishizaka/ninetails/feijoada-sete/packages/appshell' }
+13 silly runScriptInDir start [] react
+14 silly getExecOpts { cwd: '/home/bld_cishizaka/ninetails/feijoada-sete/packages/react' }
+15 error start Errored while running script in 'appshell'
+16 error execute callback with error
+17 error Error: Command failed: npm run start
+17 error events.js:167
+17 error       throw er; // Unhandled 'error' event
+17 error       ^
+17 error
+17 error Error: listen EADDRINUSE :::3001
+17 error     at Server.setupListenHandle [as _listen2] (net.js:1327:14)
+17 error     at listenInCluster (net.js:1375:12)
+17 error     at Server.listen (net.js:1462:7)
+17 error     at Server.listen (/home/bld_cishizaka/ninetails/feijoada-sete/packages/appshell/node_modules/webpack-dev-server-speedy/lib/Server.js:571:41)
+17 error     at main (/home/bld_cishizaka/ninetails/feijoada-sete/packages/appshell/node_modules/razzle/scripts/start.js:70:19)
+17 error     at process._tickCallback (internal/process/next_tick.js:68:7)
+17 error Emitted 'error' event at:
+17 error     at emitErrorNT (net.js:1354:8)
+17 error     at process._tickCallback (internal/process/next_tick.js:63:19)
+17 error npm ERR! code ELIFECYCLE
+17 error npm ERR! errno 1
+17 error npm ERR! appshell@0.0.1 start: `razzle start`
+17 error npm ERR! Exit status 1
+17 error npm ERR!
+17 error npm ERR! Failed at the appshell@0.0.1 start script.
+17 error npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+17 error
+17 error npm ERR! A complete log of this run can be found in:
+17 error npm ERR!     /home/bld_cishizaka/.npm/_logs/2018-06-26T17_14_17_613Z-debug.log
+17 error
+17 error > appshell@0.0.1 start /home/bld_cishizaka/ninetails/feijoada-sete/packages/appshell
+17 error > razzle start
+17 error
+17 error Something is already running on port 3001.
+17 error  WAIT  Compiling...
+17 error
+17 error Using .babelrc defined in your app root
+17 error Using .eslintrc defined in your app root
+17 error Using .babelrc defined in your app root
+17 error Using .eslintrc defined in your app root
+17 error [2:14:17 PM] Compiling client
+17 error
+17 error     at Promise.all.then.arr (/home/bld_cishizaka/.nvm/versions/node/v10.4.1/lib/node_modules/lerna/node_modules/execa/index.js:236:11)

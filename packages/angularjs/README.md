@@ -3,4 +3,4 @@
 
 ## Usage
 
-To run Server One, `cd angularjs` and run `PORT=5000 yarn start`
+To run Server One, `cd angularjs` and run `yarn start`

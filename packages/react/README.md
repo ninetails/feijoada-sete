@@ -3,4 +3,4 @@
 
 ## Usage
 
-To run Server One, `cd react` and run `PORT=4000 yarn start`
+To run Server One, `cd react` and run `yarn start`

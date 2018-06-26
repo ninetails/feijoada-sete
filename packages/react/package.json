@@ -1,9 +1,9 @@
 {
-  "name": "server-one",
+  "name": "react-server",
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "start": "razzle start",
+    "start": "PORT=4000 razzle start",
     "build": "razzle build",
     "test": "razzle test --env=jsdom",
     "start:prod": "NODE_ENV=production node build/server.js"

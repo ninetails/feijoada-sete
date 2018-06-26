@@ -1,11 +1,11 @@
 {
-  "name": "angularjs",
+  "name": "angularjs-server",
   "version": "0.0.1",
   "description": "AngularJS example for microfront",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "PORT=5000 node index.js"
   },
   "dependencies": {
     "cors": "^2.8.4",

@@ -3,13 +3,12 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "start": "razzle start",
+    "start": "PORT=3000 razzle start",
     "build": "razzle build",
     "test": "razzle test --env=jsdom",
     "start:prod": "NODE_ENV=production node build/server.js"
   },
   "dependencies": {
-    "babel-core": "^7.0.0-0",
     "cross-fetch": "^2.2.1",
     "express": "^4.16.3",
     "prop-types": "^15.6.2",
@@ -21,8 +20,5 @@
     "react-router-dom": "^4.3.1",
     "react-string-replace": "^0.4.1"
   },
-  "devDependencies": {
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1"
-  }
+  "devDependencies": {}
 }

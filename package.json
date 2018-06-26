@@ -4,7 +4,10 @@
   "description": "Testando microfront",
   "scripts": {
     "lint": "eslint .",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "bootstrap": "lerna bootstrap",
+    "start": "lerna run start --parallel",
+    "clean": "lerna exec --parallel -- rm -rf ./node_modules"
   },
   "repository": {
     "type": "git",
@@ -27,6 +30,7 @@
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-react": "^7.9.1",
     "eslint-plugin-standard": "^3.1.0",
-    "husky": "^0.14.3"
+    "husky": "^0.14.3",
+    "lerna": "^2.11.0"
   }
 }
