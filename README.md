@@ -3,7 +3,7 @@
 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/standard/standard)
 
-## Preparation
+## Setup
 
 Run `npm install` to install `eslint` configuration used by all subprojects
 
